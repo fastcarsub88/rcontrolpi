@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>R-ControlPi</title>
+    <link rel="stylesheet" href="style.css?01">
+    <script src="index.js" charset="utf-8" defer></script>
+  </head>
+  <body>
+    <div class="header">
+      <div class="row">
+        <div class="col2">
+          <p id="temp_elem"><span>70</span> &#8457;</p>
+        </div>
+        <div class="col2">
+          <p><img src="/img/windsysmbol.png" alt=""><span id="wind_sp_elem">5</span>mph <span id="wind_dir_elem">NE</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="">
+      <div class="row">
+        <div class="col2">
+          <fieldset>
+            <legend>Auto-Manual</legend>
+            <button type="button" name="auto_btn" id="auto_btn">Auto</button>
+          </fieldset>
+        </div>
+        <div class="col2">
+          <fieldset>
+            <legend>Set Pressure</legend>
+            <input type="number" name="pres_input" min="0" max="100" placeholder="0-100" id="pres_input">
+            <button type="submit" name="pres_sbmt_btn">Set</button>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+    <div class="dbtn-area" id="dbtn_area">
+      <div class="row">
+        <div class="d-group col2">
+          <p>Range 1-1</p>
+          <button type="button" data-dnum="11" data-dfunc="open" name="11opbtn">Open</button>
+          <button type="button" data-dnum="11" data-dfunc="close" name="11clbtn">Close</button>
+        </div>
+        <div class="d-group col2">
+          <p>Range 1-2</p>
+          <button type="button" data-dnum="12" data-dfunc="open" name="12opbtn">Open</button>
+          <button type="button" data-dnum="12" data-dfunc="close" name="12clbtn">Close</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="d-group col2">
+          <p>Range 2-1</p>
+          <button type="button" data-dnum="21" data-dfunc="open" name="21opbtn">Open</button>
+          <button type="button" data-dnum="21" data-dfunc="close" name="21clbtn">Close</button>
+        </div>
+        <div class="d-group col2">
+          <p>Range 2-2</p>
+          <button type="button" data-dnum="22" data-dfunc="open" name="22opbtn">Open</button>
+          <button type="button" data-dnum="22" data-dfunc="close" name="22clbtn">Close</button>
+        </div>
+      </div>
+    </div>
+    <div class="modal-bk no-display" id="mdl_elem">
+      <div class="modal">
+        <div class="wrpr">
+          <p id="model_title">Close 1</p>
+          <div class="row">
+            <label for="amount_move">Amount to Move</label>
+            <hr>
+            <input type="range" min="0" max="10" value="10" name="amount_mv" id="amount_mv">
+            <hr>
+          </div>
+          <div class="row">
+            <button type="button" name="dmove_btn" id="dmove_btn">Move</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

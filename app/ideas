@@ -1,0 +1,21 @@
+set points
+  air pressure large doors
+    full open = 8
+    bad conditions = 4
+
+  air pressure small doors
+    full open = 6
+    bad conditions = 3
+
+  not open side if
+    windspeed above = 10
+
+  open small doors if windchill below = 40
+  dont open doors if windchill blow = 20
+  side 1 direction = E
+
+loop
+  if open-time check time:
+    check conditions(windchill,windchill/direction,precip)
+    if windchill above:
+      if
