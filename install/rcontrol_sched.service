@@ -1,0 +1,13 @@
+
+[Unit]
+Description=Python api for R-ControlPi
+After=network-online.target
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+WorkingDirectory=/home/pi/rcontrol/app
+ExecStart=/usr/bin/python /home/pi/rcontrol/app/schedule.py
+Restart=always
+User=pi

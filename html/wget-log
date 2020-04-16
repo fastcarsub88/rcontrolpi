@@ -1,0 +1,29 @@
+--2020-03-16 17:59:50--  https://api.openweathermap.org/data/2.5/weather?zip=65078,us
+Resolving api.openweathermap.org (api.openweathermap.org)... 192.241.167.16, 192.241.187.136, 192.241.245.161
+Connecting to api.openweathermap.org (api.openweathermap.org)|192.241.167.16|:443... connected.
+HTTP request sent, awaiting response... 401 Unauthorized
+
+Username/Password Authentication Failed.
+open_method = time : sun
+close_method = time : sun
+open = '+-30' : "09:00"
+close = '+-30' : "09:00"
+
+def cnt_time(time,num):
+    t = int(time.replace(':',''))
+    dir = float(int)
+    if dir >= 0:
+        for i in range(num):
+            if int(str(t)[-2:]) == 60:
+                t += 41
+            else:
+                t += 1
+    else:
+        for i in range(num):
+            if int(str(t)[-2:] == 00):
+                t -= 41
+            else:
+                t -= 1
+    return t
+
+    for

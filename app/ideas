@@ -19,3 +19,11 @@ loop
     check conditions(windchill,windchill/direction,precip)
     if windchill above:
       if
+
+
+open :
+close :
+min_temp:
+sm_door_temp:
+max_pres :
+min_pres :

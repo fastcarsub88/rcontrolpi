@@ -1,1 +1,1 @@
-{"wind_speed": 8.05, "auto": 0, "close": 800, "open": 700, "feels_like": 16.9, "wind_dir": 330}
+{"wind_speed": 13.87, "min_pres": 4.0, "min_temp": 15, "auto": 1, "open_method": "time", "fst_close_tm": 10, "rain": "false", "close_method": "sun", "sm_door_temp": 35, "state": "open", "sunset": "19:49", "sunrise": "06:33", "rain_pres": 4.0, "max_pres": 7.1, "open_state": "small", "close": "25", "open": "09:55", "feels_like": 38.98, "wind_dir": "SW"}
