@@ -2,7 +2,7 @@ server {
 	listen 80 default_server;
 	listen [::]:80 default_server;
 
-	root /home/pi/rcontrol/html;
+	root /home/pi/rcontrolpi/html;
 
 	index index.html;
 

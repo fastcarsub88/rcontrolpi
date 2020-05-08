@@ -7,7 +7,7 @@ After=network-online.target
 WantedBy=multi-user.target
 
 [Service]
-WorkingDirectory=/home/pi/rcontrol/app
-ExecStart=/usr/bin/python /home/pi/rcontrol/app/schedule.py
+WorkingDirectory=/home/pi/rcontrolpi/app
+ExecStart=/usr/bin/python /home/pi/rcontrolpi/app/schedule.py
 Restart=always
 User=pi
