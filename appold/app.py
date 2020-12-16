@@ -6,13 +6,13 @@ def open_door(dnum,mv_tm):
     op_relay = door_dict[dnum+"open"]
     cl_relay = door_dict[dnum+"close"]
     def move():
-        m.setRelay(cl_relay[0],cl_relay[1],0)
+        r.set(cl_relay[0],cl_relay[1],0)
         sleep(0.1)
-        m.setRelay(op_relay[0],op_relay[1],1)
+        r.set(op_relay[0],op_relay[1],1)
         if mv_tm == 100:
             return
         sleep(mv_tm)
-        m.setRelay(op_relay[0],op_relay[1],0)
+        r.set(op_relay[0],op_relay[1],0)
     thr = threading.Thread(target=move)
     thr.start()
 
@@ -20,13 +20,13 @@ def close_door(dnum,mv_tm):
     op_relay = door_dict[dnum+"open"]
     cl_relay = door_dict[dnum+"close"]
     def move():
-        m.setRelay(op_relay[0],op_relay[1],0)
+        r.set(op_relay[0],op_relay[1],0)
         sleep(0.1)
-        m.setRelay(cl_relay[0],cl_relay[1],1)
+        r.set(cl_relay[0],cl_relay[1],1)
         if mv_tm == 100:
             return
         sleep(mv_tm)
-        m.setRelay(cl_relay[0],cl_relay[1],0)
+        r.set(cl_relay[0],cl_relay[1],0)
     thr = threading.Thread(target=move)
     thr.start()
 
@@ -48,14 +48,14 @@ def set_auto_man(bool):
         with open('data_file.json','w') as f:
              f.write(json.dumps(data_file))
         if bool == 0:
-            m.setRelays(0,0)
+            r.set_all(0,0)
 
 def get_params():
     with open('data_file.json') as f:
         return f.read()
 
 def get_status():
-    r_stat = '{0:04b}'.format(m.getRelays(0))
+    r_stat = '{0:08b}'.format(r.get_all(0))
     d = {}
     for i in range(len(door_arr)):
         d[door_arr[i]] = r_stat[i]

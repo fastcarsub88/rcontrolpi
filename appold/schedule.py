@@ -20,16 +20,18 @@ def close_door(dnum):
 
 def set_press(press):
     if int(m.getUOut(pres_AO[0],pres_AO[1])) == press:
+        print 'pres good'
         return
     m.setUOut(pres_AO[0],pres_AO[1],press)
+    print 'set press'
 
 def r_set(brd,num,state):
-    r_stat = '{0:04b}'.format(m.getRelays(0))
-    if int(r_stat[4 - num]) == state:
+    if r.get(brd,num) == state:
         return
-    m.setRelay(brd,num,state)
+    r.set(brd,num,state)
 
 def get_conditions(data_file):
+    print 'getting cond'
     w_data = requests.get("https://api.openweathermap.org/data/2.5/weather?zip=65078,us&appid=914fd2c984f8077049df587218d8579d&units=imperial")
     w_dict = json.loads(w_data.text)
     data_file['feels_like'] = w_dict['main']['feels_like']
@@ -37,7 +39,7 @@ def get_conditions(data_file):
     data_file['sunrise'] = time.strftime("%H:%M",time.localtime(w_dict['sys']['sunrise']))
     data_file['sunset'] = time.strftime("%H:%M",time.localtime(w_dict['sys']['sunset']))
     data_file['rain'] = ('false' if w_dict['weather'][0]['id'] > 781 else 'true')
-    c_wind_dir = (w_dict['wind']['deg'] if 'deg' in w_dict['wind'] else '0')
+    c_wind_dir = w_dict['wind']['deg']
     for value in wind_dir_dict:
         if value < c_wind_dir:
             continue
@@ -92,6 +94,7 @@ while True:
     fst_close_tm = data_file['fst_close_tm']
     if cr_tm > op_tm and cr_tm < cl_tm:
         if data_file['open_state'] == 'reset':
+            print "reset"
             data_file['open_state'] = 'main'
             if feels_like < sm_door_temp:
                 data_file['open_state'] = 'small'
@@ -103,13 +106,9 @@ while True:
             data_file['state'] = 'open'
             with open('data_file.json','w') as f:
                 f.write(json.dumps(data_file))
-        if data_file['open_state'] == 'none':
-            set_press(7)
-            close_door("11")
-            time.sleep(0.001)
-            close_door("12")
-            time.sleep(0.001)
-        else:
+        if data_file['open_state'] != 'none':
+            print 'open ! none'
+            print data_file['rain']
             if (cr_tm + fst_close_tm) > cl_tm:
                 set_press(data_file['min_pres'])
             elif (data_file['rain'] == 'true'):
@@ -121,15 +120,23 @@ while True:
             cl_dr = ('2' if st == 'main' else '1')
             open_door("1"+op_dr)
             time.sleep(0.001)
+            open_door("2"+op_dr)
+            time.sleep(0.001)
             close_door("1"+cl_dr)
+            time.sleep(0.001)
+            close_door("2"+cl_dr)
     else:
+        print 'close'
         if data_file['state'] == 'open':
             data_file['state'] = 'close'
             data_file['open_state'] = 'reset'
             with open('data_file.json','w') as f:
                 f.write(json.dumps(data_file))
-        set_press(7)
+        m.setUOut(pres_AO[0],pres_AO[1],7)
         close_door("11")
         time.sleep(0.001)
         close_door("12")
         time.sleep(0.001)
+        close_door("21")
+        time.sleep(0.001)
+        close_door("22")

@@ -1,4 +1,4 @@
-var cacheName = 'v38';
+var cacheName = 'v31';
 var filesToCache = [
   cacheName+"/index.js",
   cacheName+"/style.css",
@@ -7,7 +7,6 @@ var filesToCache = [
 ]
 self.addEventListener('install', function(e) {
   console.log('installing sw'+cacheName);
-  self.skipWaiting();
   e.waitUntil(
     caches.open(cacheName).then(function(cache) {
       cache.addAll(filesToCache);

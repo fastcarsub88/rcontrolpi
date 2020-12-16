@@ -20,7 +20,6 @@
           <h3>Current Conditions</h3>
           <p>Feels Like <span id="temp_elem"></span> &#8457;</p>
           <p>Wind <span id="wind_dir_elem"></span> at <span id="wind_sp_elem"></span>mph</p>
-          <p>Raining: <span id="rain_elem">No</span> </p>
         </div>
       </div>
     </div>
@@ -35,22 +34,31 @@
       <div id="dbtn_area">
         <div class="row">
           <div class="d-group col2">
-            <p>Main Doors</p>
+            <p>Main Doors 1 </p>
             <button class="btn_light" type="button" data-dnum="11" data-dfunc="open" name="11open">Open</button>
             <button class="btn_light" type="button" data-dnum="11" data-dfunc="close" name="11close">Close</button>
           </div>
           <div class="d-group col2">
-            <p>Small Doors</p>
+            <p>Small Doors 1</p>
             <button class="btn_light" type="button" data-dnum="12" data-dfunc="open" name="12open">Open</button>
             <button class="btn_light" type="button" data-dnum="12" data-dfunc="close" name="12close">Close</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="d-group col2">
+            <p>Main Doors 2</p>
+            <button class="btn_light" type="button" data-dnum="21" data-dfunc="open" name="21open">Open</button>
+            <button class="btn_light" type="button" data-dnum="21" data-dfunc="close" name="21close">Close</button>
+          </div>
+          <div class="d-group col2">
+            <p>Small Doors 2</p>
+            <button class="btn_light" type="button" data-dnum="22" data-dfunc="open" name="22open">Open</button>
+            <button class="btn_light" type="button" data-dnum="22" data-dfunc="close" name="22close">Close</button>
           </div>
         </div>
       </div>
     </div>
     <button id="get_params_btn" type="button" name="get_params_btn">Parameters</button>
-    <div class="last_time">
-      <p>Last poll: <span id="last_time">8:02:52 AM</span></p>
-    </div>
     <div class="modal-bk no-display" id="mdl_elem">
       <div class="modal">
         <div class="wrpr">
