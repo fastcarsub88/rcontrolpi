@@ -1,5 +1,6 @@
 import cgi,json,threading,megaioind as m,relay8 as r
 from time import sleep
+from datetime import datetime
 from definitions import *
 
 def open_door(dnum,mv_tm):
@@ -62,6 +63,7 @@ def get_status():
     res = {}
     res['d_stat'] = json.dumps(d)
     res['params'] = get_params()
+    res['time'] = datetime.now().strftime('%H:%M')
     return json.dumps(res)
 
 def put_params(jsn):
